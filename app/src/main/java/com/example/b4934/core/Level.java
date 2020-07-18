@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -120,10 +121,8 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
         for (MovingCharacterSprite movingCharacterSprite : movingCharacterSprites) {
             movingCharacterSprite.update();
             if (movingCharacterSprite.getRect().intersect(player.getRect()) && movingCharacterSprite != player) {
-
                 Log.d("game report", "update: game over");
             }
-            ;
         }
         float newX = getX() - player.getxVelocity();
         if (player.getX() + screenWidth >= (height * ratio)) {
@@ -143,7 +142,8 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
             Paint paint1 = new Paint();
             paint1.setFilterBitmap(true);
             paint1.setAntiAlias(true);
-            canvas.drawBitmap(levelBackground, null, dest, paint1);
+            canvas.drawColor(Color.rgb(18,48,134));
+            // canvas.drawBitmap(levelBackground, null, dest, paint1);
             invalidate();
         }
         if (canvas != null) {

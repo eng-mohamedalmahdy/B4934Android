@@ -24,7 +24,7 @@ public class MainThread extends Thread {
         long waitTime;
         long totalTime = 0;
         int frameCount = 0;
-        int targetFPS = 60;
+        int targetFPS = 30;
         long targetTime = 1000 / targetFPS;
 
         while (running) {
