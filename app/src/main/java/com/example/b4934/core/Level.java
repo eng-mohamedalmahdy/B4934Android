@@ -122,6 +122,7 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
             movingCharacterSprite.update();
             if (movingCharacterSprite.getRect().intersect(player.getRect()) && movingCharacterSprite != player) {
                 Log.d("game report", "update: game over");
+                thread.setRunning(false);
             }
         }
         float newX = getX() - player.getxVelocity();
@@ -142,8 +143,8 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
             Paint paint1 = new Paint();
             paint1.setFilterBitmap(true);
             paint1.setAntiAlias(true);
-            canvas.drawColor(Color.rgb(18,48,134));
-            // canvas.drawBitmap(levelBackground, null, dest, paint1);
+            canvas.drawColor(Color.rgb(18, 48, 134));
+            //canvas.drawBitmap(levelBackground, null, dest, paint1);
             invalidate();
         }
         if (canvas != null) {

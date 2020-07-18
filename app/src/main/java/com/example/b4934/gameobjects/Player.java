@@ -1,12 +1,12 @@
-package com.example.b4934.gameobjects.levels;
+package com.example.b4934.gameobjects;
 
 import android.graphics.Bitmap;
 
 import com.example.b4934.core.MovingCharacterSprite;
 
 public class Player extends MovingCharacterSprite {
-    public Player(Bitmap[] bmp, int width, int height) {
-        super(bmp, width, height);
+    public Player(Bitmap[] bmp) {
+        super(bmp);
     }
 
     @Override
