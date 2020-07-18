@@ -2,15 +2,9 @@ package com.example.b4934.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
-import com.example.b4934.R;
-import com.example.b4934.core.Level;
-import com.example.b4934.core.MovingCharacterSprite;
-import com.example.b4934.core.StaticCharacterSprite;
-import com.example.b4934.levels.Level1;
+import com.example.b4934.gameobjects.levels.Level1;
 
 public class GameActivity extends AppCompatActivity {
 

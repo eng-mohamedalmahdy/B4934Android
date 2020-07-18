@@ -5,19 +5,18 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-public class MovingCharacterSprite {
-    private Bitmap[] images;
-    private int x, y;
-    private int xVelocity = 10;
-    private int yVelocity = 10;
-    private int width;
-    private int height;
-    private boolean up;
-    int currFrame = 0;
+public abstract class MovingCharacterSprite {
+    protected Bitmap[] images;
+    protected int x, y;
+    protected int xVelocity = 10;
+    protected int yVelocity = 10;
+    protected int width;
+    protected int height;
+    protected boolean up;
+    protected int currFrame = 0;
 
-
-    private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-    private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+    protected int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+    protected int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
 
     public MovingCharacterSprite(Bitmap[] bmp, int width, int height) {
         images = bmp;
@@ -32,18 +31,7 @@ public class MovingCharacterSprite {
         canvas.drawBitmap(images[currFrame], x, y, null);
     }
 
-    public void update() {
-        x += xVelocity;
-        y += (up)?-yVelocity:yVelocity;
-//        if ((x > screenWidth - width) || (x < 0)) {
-//            xVelocity = xVelocity * -1;
-//        }
-//        if ((y > screenHeight - height) || (y < 0)) {
-//            yVelocity = yVelocity * -1;
-//        }
-        currFrame++;
-        currFrame %= images.length;
-    }
+    abstract public void update();
 
     public int getxVelocity() {
         return xVelocity;

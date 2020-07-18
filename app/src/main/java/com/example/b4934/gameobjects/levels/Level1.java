@@ -1,4 +1,4 @@
-package com.example.b4934.levels;
+package com.example.b4934.gameobjects.levels;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,7 +18,7 @@ public class Level1 {
             int rid = context.getResources().getIdentifier("player_" + (i + 1), "drawable", context.getPackageName());
             arr[i] = BitmapFactory.decodeResource(context.getResources(), rid);
         }
-        MovingCharacterSprite player = new MovingCharacterSprite(arr, 50, 50);
+        Player player = new Player(arr, 50, 50);
         level = new Level(context, player, background);
 
     }
