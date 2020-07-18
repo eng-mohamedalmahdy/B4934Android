@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 
 import com.example.b4934.core.Level;
 import com.example.b4934.gameobjects.Player;
-import com.example.b4934.gameobjects.obstacles.BaseObstacle;
 import com.example.b4934.utils.SpritesFactory;
 
 public class Level1 {
