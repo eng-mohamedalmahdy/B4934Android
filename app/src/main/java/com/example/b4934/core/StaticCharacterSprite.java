@@ -4,7 +4,8 @@ import android.graphics.Bitmap;
 
 public abstract class StaticCharacterSprite extends MovingCharacterSprite {
 
-    public StaticCharacterSprite(Bitmap bmp, int width, int height) {
-        super(new Bitmap[]{bmp}, width, height);
+    public StaticCharacterSprite(Bitmap bmp) {
+        super(new Bitmap[]{bmp});
     }
+
 }

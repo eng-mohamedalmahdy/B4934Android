@@ -5,30 +5,28 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+import com.example.b4934.utils.Util;
+
 public abstract class MovingCharacterSprite {
     protected Bitmap[] images;
     protected int x, y;
     protected int xVelocity = 10;
     protected int yVelocity = 10;
-    protected int width;
-    protected int height;
     protected boolean up;
     protected int currFrame = 0;
 
-    protected int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-    protected int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
 
-    public MovingCharacterSprite(Bitmap[] bmp, int width, int height) {
+
+    public MovingCharacterSprite(Bitmap[] bmp) {
         images = bmp;
-        this.width = width;
-        this.height = height;
         x = 50;
-        y = screenHeight / 2;
+        y = Util.screenHeight / 2;
 
     }
 
     public void draw(Canvas canvas) {
         canvas.drawBitmap(images[currFrame], x, y, null);
+
     }
 
     abstract public void update();
@@ -66,7 +64,7 @@ public abstract class MovingCharacterSprite {
     }
 
     public Rect getRect() {
-        return new Rect(x, y, x + width, y + height);
+        return new Rect(x, y, x + images[currFrame].getWidth(), y + images[currFrame].getHeight());
     }
 
     public void setUp(boolean up) {
