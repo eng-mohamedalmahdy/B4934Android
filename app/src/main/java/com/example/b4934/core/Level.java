@@ -20,6 +20,8 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 
+import com.example.b4934.utils.Util;
+
 import java.util.ArrayList;
 
 @SuppressLint("ViewConstructor")
@@ -42,8 +44,6 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
         this.player = player;
         init();
         movingCharacterSprites.add(player);
-
-
     }
 
     public Level(Context context, MovingCharacterSprite player, Bitmap levelBackground) {
@@ -71,7 +71,7 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
         width = size.x;
         height = size.y;
         ratio = (double) levelBackground.getWidth() / (double) levelBackground.getHeight();
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams((int) (height * ratio), height);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(Util.screenWidth*3, Util.screenHeight);
         setLayoutParams(params);
 
         setOnTouchListener((v, event) -> {
@@ -122,15 +122,11 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
             movingCharacterSprite.update();
             if (movingCharacterSprite.getRect().intersect(player.getRect()) && movingCharacterSprite != player) {
                 Log.d("game report", "update: game over");
-                thread.setRunning(false);
+                //thread.setRunning(false);
             }
         }
         float newX = getX() - player.getxVelocity();
-        if (player.getX() + screenWidth >= (height * ratio)) {
-            newX = 0;
-            player.setX(50);
-            invalidate();
-        }
+
         setX(newX);
     }
 
@@ -173,6 +169,11 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
 
     public void addObject(MovingCharacterSprite object) {
         movingCharacterSprites.add(object);
+        invalidate();
+    }
+
+    public void removeObject(MovingCharacterSprite object) {
+        movingCharacterSprites.remove(object);
         invalidate();
     }
 }

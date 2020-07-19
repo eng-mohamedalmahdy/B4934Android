@@ -7,14 +7,14 @@ import android.graphics.Rect;
 
 import com.example.b4934.utils.Util;
 
-public abstract class MovingCharacterSprite {
+public abstract class MovingCharacterSprite implements Comparable {
     protected Bitmap[] images;
     protected int x, y;
     protected int xVelocity = 10;
     protected int yVelocity = 10;
     protected boolean up;
     protected int currFrame = 0;
-
+    public int weight = 0;
 
 
     public MovingCharacterSprite(Bitmap[] bmp) {
@@ -22,6 +22,14 @@ public abstract class MovingCharacterSprite {
         x = 50;
         y = Util.screenHeight / 2;
 
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        MovingCharacterSprite other = (MovingCharacterSprite) o;
+        if (other.getWeight() == getWeight()) return 0;
+        else if (getWeight() > other.getWeight()) return 1;
+        return -1;
     }
 
     public void draw(Canvas canvas) {
@@ -65,6 +73,14 @@ public abstract class MovingCharacterSprite {
 
     public Rect getRect() {
         return new Rect(x, y, x + images[currFrame].getWidth(), y + images[currFrame].getHeight());
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public void setUp(boolean up) {
