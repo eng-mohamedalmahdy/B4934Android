@@ -1,11 +1,10 @@
 package com.example.b4934.core;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import com.example.b4934.utils.Util;
+import com.example.b4934.utils.Constants;
 
 public abstract class MovingCharacterSprite implements Comparable<MovingCharacterSprite> {
     protected Bitmap[] images;
@@ -19,7 +18,7 @@ public abstract class MovingCharacterSprite implements Comparable<MovingCharacte
     public MovingCharacterSprite(Bitmap[] bmp) {
         images = bmp;
         x = 50;
-        y = Util.screenHeight / 2;
+        y = Constants.screenHeight / 2;
 
     }
 

@@ -3,12 +3,14 @@ package com.example.b4934.gameobjects;
 import android.graphics.Bitmap;
 
 import com.example.b4934.core.MovingCharacterSprite;
+import com.example.b4934.utils.Constants;
 
 public class Player extends MovingCharacterSprite {
     protected boolean up;
 
     public Player(Bitmap[] bmp) {
         super(bmp);
+        setWeight(Constants.PLAYER_WEIGHT);
     }
 
 

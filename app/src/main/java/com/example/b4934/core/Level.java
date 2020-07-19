@@ -3,7 +3,6 @@ package com.example.b4934.core;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -21,7 +20,7 @@ import android.widget.FrameLayout;
 
 
 import com.example.b4934.gameobjects.Player;
-import com.example.b4934.utils.Util;
+import com.example.b4934.utils.Constants;
 
 import java.util.ArrayList;
 
@@ -71,7 +70,7 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
         width = size.x;
         height = size.y;
         ratio = (double) levelBackground.getWidth() / (double) levelBackground.getHeight();
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(Util.screenWidth*3, Util.screenHeight);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(Constants.screenWidth * 3, Constants.screenHeight);
         setLayoutParams(params);
 
         setOnTouchListener((v, event) -> {
@@ -120,7 +119,8 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         for (MovingCharacterSprite movingCharacterSprite : movingCharacterSprites) {
             movingCharacterSprite.update();
-            if (movingCharacterSprite.getRect().intersect(player.getRect()) && movingCharacterSprite != player) {
+            if (movingCharacterSprite.getRect().intersect(player.getRect()) &&
+                movingCharacterSprite.getWeight() != player.getWeight()) {
                 Log.d("game report", "update: game over");
                 //thread.setRunning(false);
             }
