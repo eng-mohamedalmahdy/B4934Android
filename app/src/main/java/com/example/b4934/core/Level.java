@@ -20,7 +20,9 @@ import android.widget.FrameLayout;
 
 
 import com.example.b4934.gameobjects.Player;
+import com.example.b4934.gameobjects.obstacles.BaseObstacle;
 import com.example.b4934.utils.Constants;
+import com.example.b4934.utils.SpritesFactory;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
     int width;
     int height;
     double ratio;
+    final private int maxWidth = 168;
 
     private Bitmap levelBackground;
     private Player player;
@@ -56,6 +59,17 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
 
     }
 
+    public void generateObstacles(){
+        int parts = Constants.screenWidth / 5;
+        int start = parts + 1, mn = start, mx = 2 * parts;
+        for(int part = 1; part < parts; part++){
+            int randX = (int)Math.random() * (mx - mn + 1) + mn;
+            BaseObstacle ob = new BaseObstacle(SpritesFactory.getRandomBuildingObstacle(context), randX);
+            addObject(ob);
+            mn = mx + 1;
+            mx *= parts;
+        }
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     private void init() {
@@ -175,5 +189,9 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
     public void removeObject(MovingCharacterSprite object) {
         movingCharacterSprites.remove(object);
         invalidate();
+    }
+
+    public int getMaxWidth() {
+        return maxWidth;
     }
 }

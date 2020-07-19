@@ -13,12 +13,10 @@ public class Level1 {
     private BaseObstacle ob1;
 
     public Level1(Context context) {
-        ob1 = new BaseObstacle(SpritesFactory.getObstacle3Sprite(context),1000);
         Bitmap background = SpritesFactory.getLevel1BackgroundSprite(context);
         Player player = new Player(SpritesFactory.getOwlSprites(context));
         level = new Level(context, player, background);
-        level.addObject(ob1);
-
+        level.generateObstacles();
     }
 
     public Level getLevel() {
