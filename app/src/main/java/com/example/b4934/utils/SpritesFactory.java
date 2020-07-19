@@ -64,8 +64,24 @@ public class SpritesFactory {
         return getSpriteFromId(context, R.drawable.obstacles_obstacle5);
     }
 
-//    @NotNull
-//    public static Bitmap getRandomBuildingObstacle(Context context) {
-//
-//    }
+    @NotNull
+    public static Bitmap getRandomBuildingObstacle(Context context) {
+        int rand = (int) (Math.random() * 10) % 6;
+        switch (rand) {
+            case 1:
+                return getObstacle1Sprite(context);
+            case 2:
+                return getObstacle2Sprite(context);
+            case 3:
+                return getObstacle3Sprite(context);
+            case 4:
+                return getObstacle4Sprite(context);
+            case 5:
+                return getObstacle5Sprite(context);
+            default:
+                Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+                return Bitmap.createBitmap(50, 50, conf); // this creates a MUTABLE bitmap
+
+        }
+    }
 }
