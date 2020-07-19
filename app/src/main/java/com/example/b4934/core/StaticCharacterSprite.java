@@ -6,6 +6,8 @@ public abstract class StaticCharacterSprite extends MovingCharacterSprite {
 
     public StaticCharacterSprite(Bitmap bmp) {
         super(new Bitmap[]{bmp});
+        xVelocity = 0;
+        yVelocity = 0;
     }
 
 }

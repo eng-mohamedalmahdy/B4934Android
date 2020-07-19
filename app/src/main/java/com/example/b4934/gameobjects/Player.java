@@ -5,8 +5,15 @@ import android.graphics.Bitmap;
 import com.example.b4934.core.MovingCharacterSprite;
 
 public class Player extends MovingCharacterSprite {
+    protected boolean up;
+
     public Player(Bitmap[] bmp) {
         super(bmp);
+    }
+
+
+    public void setUp(boolean up) {
+        this.up = up;
     }
 
     @Override

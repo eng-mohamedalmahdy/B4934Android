@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 
+import com.example.b4934.gameobjects.Player;
 import com.example.b4934.utils.Util;
 
 import java.util.ArrayList;
@@ -34,11 +35,10 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
     double ratio;
 
     private Bitmap levelBackground;
-    private MovingCharacterSprite player;
+    private Player player;
     private ArrayList<MovingCharacterSprite> movingCharacterSprites;
-    private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
 
-    public Level(Context context, MovingCharacterSprite player) {
+    public Level(Context context, Player player) {
         super(context);
         this.context = context;
         this.player = player;
@@ -46,7 +46,7 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
         movingCharacterSprites.add(player);
     }
 
-    public Level(Context context, MovingCharacterSprite player, Bitmap levelBackground) {
+    public Level(Context context, Player player, Bitmap levelBackground) {
         super(context);
         this.levelBackground = levelBackground;
         this.context = context;

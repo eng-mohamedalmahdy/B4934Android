@@ -18,6 +18,7 @@ public class Level1 {
         Player player = new Player(SpritesFactory.getOwlSprites(context));
         level = new Level(context, player, background);
         level.addObject(ob1);
+
     }
 
     public Level getLevel() {

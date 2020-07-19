@@ -2,6 +2,7 @@ package com.example.b4934.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import com.example.b4934.gameobjects.levels.Level1;
@@ -13,7 +14,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         level = new Level1(this);
         setContentView(level.getLevel());
     }
@@ -31,5 +32,6 @@ public class GameActivity extends AppCompatActivity {
         level.getLevel().getThread().setRunning(false);
         finish();
     }
+
 }
 

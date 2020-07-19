@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 public class MainThread extends Thread {
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private Level gameView;
     private boolean running;
     public static Canvas canvas;
@@ -38,6 +38,7 @@ public class MainThread extends Thread {
                     this.gameView.draw(canvas);
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             } finally {
                 if (canvas != null) {
                     try {
