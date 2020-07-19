@@ -64,4 +64,8 @@ public class SpritesFactory {
         return getSpriteFromId(context, R.drawable.obstacles_obstacle5);
     }
 
+//    @NotNull
+//    public static Bitmap getRandomBuildingObstacle(Context context) {
+//
+//    }
 }
