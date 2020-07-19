@@ -17,6 +17,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 
 import com.example.b4934.gameobjects.Player;
@@ -35,7 +36,6 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
     int height;
     double ratio;
     final private int maxWidth = 168;
-
     private Bitmap levelBackground;
     private Player player;
     private ArrayList<MovingCharacterSprite> movingCharacterSprites;
@@ -59,16 +59,19 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
 
     }
 
-    public void generateObstacles(){
+    public void generateObstacles() {
         int parts = Constants.screenWidth / 5;
-        int start = parts + 1, mn = start, mx = 2 * parts;
-        for(int part = 1; part < parts; part++){
-            int randX = (int)Math.random() * (mx - mn + 1) + mn;
+        Log.d("game report", "parts :" + parts); // 409 wtf
+
+        int start = parts + 1, mn = start, mx = 2 * parts - maxWidth;
+        for (int part = 1; part < 5; part++) {
+            int randX = (int) (Math.random() * (mx - mn + 1) + mn);
             BaseObstacle ob = new BaseObstacle(SpritesFactory.getRandomBuildingObstacle(context), randX);
             addObject(ob);
-            mn = mx + 1;
-            mx *= parts;
+            mn = (part + 1) * parts;
+            mx += parts;
         }
+        Toast.makeText(context, "game report " + "objs :" + movingCharacterSprites.size(), Toast.LENGTH_LONG).show();//توست سخن
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -134,7 +137,7 @@ public class Level extends SurfaceView implements SurfaceHolder.Callback {
         for (MovingCharacterSprite movingCharacterSprite : movingCharacterSprites) {
             movingCharacterSprite.update();
             if (movingCharacterSprite.getRect().intersect(player.getRect()) &&
-                movingCharacterSprite.getWeight() != player.getWeight()) {
+                    movingCharacterSprite.getWeight() != player.getWeight()) {
                 Log.d("game report", "update: game over");
                 //thread.setRunning(false);
             }

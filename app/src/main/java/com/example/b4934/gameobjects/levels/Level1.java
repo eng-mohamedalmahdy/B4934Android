@@ -10,7 +10,6 @@ import com.example.b4934.utils.SpritesFactory;
 
 public class Level1 {
     private Level level;
-    private BaseObstacle ob1;
 
     public Level1(Context context) {
         Bitmap background = SpritesFactory.getLevel1BackgroundSprite(context);
